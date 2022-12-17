@@ -1,0 +1,14 @@
+{
+  "name": "priority-treemap",
+  "version": "1.0.0",
+  "author": "Felipe Bayona <afbayonac@gmail.com>",
+  "private": true,
+  "scripts": {
+    "start": "webpack"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
