@@ -4,7 +4,8 @@
   "author": "Felipe Bayona <afbayonac@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "webpack"
+    "start": "webpack",
+    "build": "webpack"
   },
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
