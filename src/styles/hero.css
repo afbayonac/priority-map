@@ -26,9 +26,14 @@
 
 
 .hero__author {
-  color: var(--main-color);
+  color: var(--primary-color);
   font-size: 1rem;
   text-align: center;
   font-family: 'DynaPuff', cursive;
+}
+
+
+.hero__author > a {
+  color: var(--main-color);
 }
 

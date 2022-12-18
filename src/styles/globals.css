@@ -21,8 +21,6 @@ main {
   position: relative;
 }
 
-
-main > div {
-  position: absolute;
+a {
+  color: var(--primary-color);
 }
-
