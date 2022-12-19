@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
   return {
     ...( argv.mode === 'development'
     ? {
-      watchpack: true,
+      watch: true,
       devServer: {
         static: {
           directory: path.join(__dirname, 'dist'),
@@ -32,8 +32,12 @@ module.exports = (env, argv) => {
             'style-loader',
             'css-loader'
           ]
-        }
-      ]
+        }, {
+          test: /\.js$/,
+          enforce: "pre",
+          use: ["source-map-loader"],
+        },
+      ],
     },
     plugins: [
       new HtmlWebpackPlugin({

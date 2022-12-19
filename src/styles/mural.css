@@ -1,0 +1,19 @@
+.mural {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+
+.branch {
+  background-color: #CCC;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
+
+
+.branch:hover {
+  background-color: #fff;  
+}
