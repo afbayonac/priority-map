@@ -8,7 +8,7 @@ import { log } from "./utils/log"
 
 log('init [🦥]')
 
-const randomBetween = (a, b) => Math.floor(Math.random() * (b - a)) + a
+const randomBetween = (min, max) => Math.floor(Math.random() * (max - min)) + min
 
 const mural  = document.getElementById('mural')
 
@@ -39,7 +39,7 @@ const renderTreemap = (document, element, data) => {
     d => d.sort(desc),
     normalize,
     calcAreaByBranch(width * height),
-    d => squarified(d, width, height),
+    d => squarified(d, width, height, [], 0, 0, false),
     d => {
       log(d)
       return d
@@ -87,35 +87,75 @@ const genHTMLElements = document => data => data
 renderTreemap(document, mural, [
   {
     item: 'A',
-    priority: randomBetween(0, 100)
+    priority: randomBetween(20, 100)
   },
   {
     item: 'B',
-    priority: randomBetween(0, 100)
+    priority: randomBetween(20, 100)
   },
   {
     item: 'C',
-    priority: randomBetween(0, 100)
+    priority: randomBetween(20, 100)
   },
   {
     item: 'D',
-    priority: randomBetween(0, 100)
+    priority: randomBetween(20, 100)
   },
   {
     item: 'E',
-    priority: randomBetween(0, 100)
+    priority: randomBetween(20, 100)
   },
   {
     item: 'F',
-    priority: randomBetween(0, 100)
+    priority: randomBetween(20, 100)
   },
   {
     item: 'G',
-    priority: randomBetween(0, 100)
+    priority: randomBetween(20, 100)
   },
   {
     item: 'H',
-    priority: randomBetween(0, 100)
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'C',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'D',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'E',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'F',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'G',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'H',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'E',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'F',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'G',
+    priority: randomBetween(20, 100)
+  },
+  {
+    item: 'H',
+    priority: randomBetween(20, 100)
   }
 ])
 

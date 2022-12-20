@@ -1,50 +1,46 @@
 import { log } from "./log"
 
-export const squarified = (data, width, height, aco = [],  offsetX = 0, offsetY = 0) => {
-  if (data.length === 0) {
-    return calcAreaPosition(aco, width,  height, offsetX, offsetY )
+export const squarified = (data, width, height, aco = [],  offsetX = 0, offsetY = 0, isInverted = false) => {  
+
+  if (data.length === 0 && aco.length === 0) {
+    return []
   }
-  
 
   if(aco.length === 0) {
-    return squarified(data.slice(1), width, height, [data[0]], offsetX, offsetY)
+    return squarified(data.slice(1), width, height, [data[0]], offsetX, offsetY, isInverted)
   }
 
-  log('ok')
-  log(worst(aco, height))
-  log(worst([...aco, data[0]], height))
-  if(worst(aco, height) < worst([...aco, data[0]], height)) {
+  const isWorst = data.length === 0 || worst(aco, height) < worst([...aco, data[0]], height)
 
-    log(worst(aco, height))
-    log(worst([...aco, data[0]], height))
-
-    const b = aco.reduce((aco, { area }) => area + aco, 0) / height
-
-    return [
-      ...calcAreaPosition(aco, width,  height, offsetX, offsetY ),
-      ...squarified(data, width - b, height, [], offsetX + b, 0)
-    ]
+  if(!isWorst) {
+    return squarified(data.slice(1), width, height, [...aco, data[0]], offsetX, offsetY, isInverted)
   }
 
-  return squarified(data.slice(1), width, height, [...aco, data[0]], offsetX, offsetY)
+  const area = aco.reduce((aco, { area }) => area + aco, 0)
+  const base = area / height
+
+  log({isInverted, isInvertedX: !isInverted, data})
+  return [
+    ...calcAreaPosition(aco, base, offsetX, offsetY, isInverted),
+    ...squarified(data, height, width - base, [], offsetY, offsetX + base, !isInverted)
+  ]
 }
 
 
-const calcAreaPosition = (data, width, height, offsetX, offsetY) => {
-  const b = data.reduce((aco, { area }) => area + aco, 0) / height
+const calcAreaPosition = (data, base, offsetX, offsetY, isInverted) => {
+
   return data
-    .map((branch) => ({
+    .map(branch => ({
       ...branch,
-      width: b,
-      height: branch.area / b,
-      ar: b / (branch.area / b),
+      width: isInverted ? branch.area / base: base,
+      height: isInverted ? base : branch.area / base,
     }))
     .reduce((acc, branch, i) =>[
       ...acc,
       {
         ...branch,
-        top: i !== 0 ? acc[i - 1].top  + acc[i - 1].height: offsetY,
-        left: i !== 0 ? acc[i - 1].left : offsetX
+        top: !isInverted ? i !== 0 ? acc[i - 1].top + acc[i - 1].height: offsetY : offsetX,
+        left: isInverted ? i !== 0 ? acc[i - 1].left + acc[i - 1].width: offsetY : offsetX,
       }
     ], [])
 }
