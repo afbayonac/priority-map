@@ -1,7 +1,4 @@
-import { log } from './log'
 import { interpolateViridis } from 'd3-scale-chromatic'
-
-log(interpolateViridis(0.08492201039861352))
 
 export const normalize = data => {
   const total = data.reduce((aco, { priority }) => priority + aco, 0)
@@ -51,12 +48,11 @@ export const squarifiedPlus = (data, width, height, aco = [], offsetX = 0, offse
     return squarifiedPlus(data.slice(1), width, height, [...aco, data[0]], offsetX, offsetY, isInverted)
   }
 
-  const isWorstIvert = worst(aco, width) > worst(aco, height)
-  log({ isWorstIvert })
   const area = aco.reduce((aco, { area }) => area + aco, 0)
 
+  const isWorstIvert = worst(aco, width) > worst(aco, height)
+
   if (!isWorstIvert) {
-    log({ do: 'iverted' })
     const base = area / width
     return [
       ...calcAreaPosition(aco, base, offsetY, offsetX, !isInverted),
@@ -65,7 +61,6 @@ export const squarifiedPlus = (data, width, height, aco = [], offsetX = 0, offse
   }
 
   const base = area / height
-
   return [
     ...calcAreaPosition(aco, base, offsetX, offsetY, isInverted),
     ...squarifiedPlus(data, height, width - base, [], offsetY, offsetX + base, !isInverted)
