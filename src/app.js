@@ -2,7 +2,7 @@ import './styles/reset.css'
 import './styles/globals.css'
 import './styles/hero.css'
 import './styles/mural.css'
-import 'assert./styles/modal.css'
+import './styles/modal.css'
 
 import { pipe } from './utils/pipe'
 import { calcAreaByBranch, calcColor, normalize, squarified } from './utils/layouts'
