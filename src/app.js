@@ -2,8 +2,10 @@ import "./styles/reset.css"
 import "./styles/globals.css"
 import "./styles/hero.css"
 import "./styles/mural.css"
+import "./styles/modal.css"
+
 import { pipe } from "./utils/pipe"
-import { squarified } from "./utils/layouts"
+import { calcAreaByBranch, calcColor, normalize, squarified } from "./utils/layouts"
 import { log } from "./utils/log"
 
 log('init [🦥]')
@@ -38,6 +40,7 @@ const renderTreemap = (document, element, data) => {
     data,
     d => d.sort(desc),
     normalize,
+    calcColor,
     calcAreaByBranch(width * height),
     d => squarified(d, width, height, [], 0, 0, false),
     d => {
@@ -47,26 +50,10 @@ const renderTreemap = (document, element, data) => {
     genHTMLElements(document)
   ) 
 
-
   element.replaceChildren(...branches)
 }
 
-const calcAreaByBranch = area => data => data
-  .map(branch => ({
-    ...branch,
-    area:  area * branch.norm,
-  }))
-
 const desc = (a, b) => b.priority - a.priority
-
-const normalize = data => {
-  const total = data.reduce((aco, { priority }) => priority + aco, 0)
-  return data
-    .map(branch => ({
-      ...branch,
-      norm:  branch.priority / total
-    }))
-}
 
 const genHTMLElements = document => data => data
   .map(branch => {
@@ -76,6 +63,7 @@ const genHTMLElements = document => data => data
       height: ${branch.height}px;
       top: ${branch.top}px;
       left: ${branch.left}px;
+      background-color: ${branch.color};
     `)
 
     div.classList.add('branch')
@@ -84,77 +72,100 @@ const genHTMLElements = document => data => data
     return div
   })
 
+
+const modal = () => {
+
+}
+
 renderTreemap(document, mural, [
   {
-    item: 'A',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'B',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'C',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'D',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'E',
+    item: 1,
+    title: 'Random title',
+    priority: randomBetween(20, 200)
+  },
+  {
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'F',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'G',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'H',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'C',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'D',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'E',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'F',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'G',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'H',
+    item: 1,
+    title: 'Random title',
+    priority: randomBetween(20, 200)
+  },
+  {
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   },
   {
-    item: 'E',
-    priority: randomBetween(20, 100)
+    item: 1,
+    title: 'Random title',
+    priority: randomBetween(20, 400)
   },
   {
-    item: 'F',
-    priority: randomBetween(20, 100)
-  },
-  {
-    item: 'G',
-    priority: randomBetween(20, 100)
-  },
-  {
-    item: 'H',
+    item: 1,
+    title: 'Random title',
     priority: randomBetween(20, 100)
   }
 ])

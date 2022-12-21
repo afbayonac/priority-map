@@ -1,4 +1,17 @@
 import { log } from "./log"
+import { interpolateViridis } from 'd3-scale-chromatic'
+
+log(interpolateViridis(0.08492201039861352))
+
+export const normalize = data => {
+  const total = data.reduce((aco, { priority }) => priority + aco, 0)
+  return data
+    .map(branch => ({
+      ...branch,
+      norm:  branch.priority / total
+    }))
+}
+
 
 export const squarified = (data, width, height, aco = [],  offsetX = 0, offsetY = 0, isInverted = false) => {  
 
@@ -45,7 +58,14 @@ const calcAreaPosition = (data, base, offsetX, offsetY, isInverted) => {
     ], [])
 }
 
+export const calcColor = data => {
+  const min = Math.min(...data.map(d => d.norm)) 
+  const max = Math.max(...data.map(d => d.norm))
+  log({max, min, })
+  const t = v => (v - min) / (max - min)
 
+  return data.map(d => ({...d, color: interpolateViridis(t(d.norm)) }))
+}
 
 const worst = (data, a) => {
   const areas = data.map(({area}) => area)
@@ -56,4 +76,11 @@ const worst = (data, a) => {
     Math.abs(1 - b / (Math.min(...areas) / b))
   )
 }
+
+export const calcAreaByBranch = area => data => data
+  .map(branch => ({
+    ...branch,
+    area:  area * branch.norm,
+  }))
+
 

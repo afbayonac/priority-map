@@ -11,9 +11,11 @@
   height: 100px;
   width: 100px;
   overflow: hidden;
+  border: 1px solid none;
+  box-sizing: border-box;
 }
 
 
 .branch:hover {
-  background-color: #fff;  
+  border: 1px solid #fff;
 }
