@@ -5,7 +5,7 @@ import './styles/mural.css'
 import './styles/modal.css'
 
 import { pipe } from './utils/pipe'
-import { calcAreaByBranch, calcColor, normalize, squarified } from './utils/layouts'
+import { calcAreaByBranch, calcColor, normalize, squarifiedPlus } from './utils/layouts'
 import { log } from './utils/log'
 
 const randomBetween = (min, max) => Math.floor(Math.random() * (max - min)) + min
@@ -39,7 +39,12 @@ const renderTreemap = (document, element, data) => {
     normalize,
     calcColor,
     calcAreaByBranch(width * height),
-    d => squarified(d, width, height, [], 0, 0, false),
+    d => {
+      if (width > height) {
+        return squarifiedPlus(d, width, height, [], 0, 0, false)
+      }
+      return squarifiedPlus(d, height, width, [], 0, 0, true)
+    },
     d => {
       log(d)
       return d

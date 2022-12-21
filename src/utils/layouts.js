@@ -36,6 +36,42 @@ export const squarified = (data, width, height, aco = [], offsetX = 0, offsetY =
   ]
 }
 
+export const squarifiedPlus = (data, width, height, aco = [], offsetX = 0, offsetY = 0, isInverted = false) => {
+  if (data.length === 0 && aco.length === 0) {
+    return []
+  }
+
+  if (aco.length === 0) {
+    return squarifiedPlus(data.slice(1), width, height, [data[0]], offsetX, offsetY, isInverted)
+  }
+
+  const isWorst = data.length === 0 || worst(aco, height) < worst([...aco, data[0]], height)
+
+  if (!isWorst) {
+    return squarifiedPlus(data.slice(1), width, height, [...aco, data[0]], offsetX, offsetY, isInverted)
+  }
+
+  const isWorstIvert = worst(aco, width) > worst(aco, height)
+  log({ isWorstIvert })
+  const area = aco.reduce((aco, { area }) => area + aco, 0)
+
+  if (!isWorstIvert) {
+    log({ do: 'iverted' })
+    const base = area / width
+    return [
+      ...calcAreaPosition(aco, base, offsetY, offsetX, !isInverted),
+      ...squarifiedPlus(data, height - base, width, [], offsetY + base, offsetX, !isInverted)
+    ]
+  }
+
+  const base = area / height
+
+  return [
+    ...calcAreaPosition(aco, base, offsetX, offsetY, isInverted),
+    ...squarifiedPlus(data, height, width - base, [], offsetY, offsetX + base, !isInverted)
+  ]
+}
+
 const calcAreaPosition = (data, base, offsetX, offsetY, isInverted) => data
   .map(branch => ({
     ...branch,
