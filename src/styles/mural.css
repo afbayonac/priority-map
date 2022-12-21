@@ -11,11 +11,34 @@
   height: 100px;
   width: 100px;
   overflow: hidden;
-  border: 1px solid none;
+  border: 2px solid transparent;
   box-sizing: border-box;
+  padding: 4px;
+  transition: all ;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
 }
 
 
 .branch:hover {
-  border: 1px solid #fff;
+  border: 2px solid var(--secondary-color);
+  z-index: 100;
+}
+
+.branch__title {
+  color: #FFF;
+  font-size: 1.6rem;
+  text-align: left;
+  mix-blend-mode: difference;
+  font-family: 'DynaPuff', cursive;
+}
+
+
+.branch__description {
+  color: #FFF;
+  font-size: 1rem;
+  text-align: left;
+  mix-blend-mode: difference;
+  font-family: 'Karla', sans-serif;
 }
