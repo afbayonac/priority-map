@@ -82,23 +82,23 @@ const calcAreaPosition = (data, base, offsetX, offsetY, isInverted) => data
     }
   ], [])
 
-export const calcColor = data => {
-  const min = Math.min(...data.map(d => d.norm))
-  const max = Math.max(...data.map(d => d.norm))
-
+export const interpolate = data => {
+  const min = Math.min(...data.map(d => d.priority))
+  const max = Math.max(...data.map(d => d.priority))
   const t = v => (v - min) / (max - min)
 
-  return data.map(d => ({ ...d, color: interpolateViridis(t(d.norm)) }))
+  return data.map(d => ({ ...d, interpolation: t(d.priority) }))
 }
+
+export const calcColor = data => data
+  .map(d => ({ ...d, color: interpolateViridis(d.interpolation) }))
 
 const worst = (data, a) => {
   const areas = data.map(({ area }) => area)
   const b = areas.reduce((aco, area) => area + aco, 0) / a
+  const b2 = b * b
 
-  return Math.max(
-    Math.abs(1 - b / (Math.min(...areas) / b)),
-    Math.abs(1 - b / (Math.min(...areas) / b))
-  )
+  return data.reduce((aco, { area }) => aco + Math.abs(2 - b2 / area - area / b2), 0) / data.length
 }
 
 export const calcAreaByBranch = area => data => data
