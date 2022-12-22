@@ -6,7 +6,6 @@ import { calcAreaByBranch, calcColor, interpolate, normalize, squarifiedPlus } f
 const renderTreemap = (document, element, data) => {
   const height = element.offsetHeight
   const width = element.offsetWidth
-
   const branches = pipe(
     data,
     d => d.sort(desc),
