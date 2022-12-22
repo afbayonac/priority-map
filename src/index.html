@@ -18,26 +18,34 @@
   </section>
   <main id="mural" class="mural">
   </main>
-  <section class="modal">
-    <div class="modal__container">
+  <section id="board" class="board">
+    <div class="board__background"></div>
+    <div class="board__container">
       <nav>
         <ul>
-          <li>list</li>
-          <li>add</li>
+          <li id="board__nav__list"> ☰ </li>
+          <li id="board__nav__add">＋</li>
+          <li id="board__nav__close" style="transform: rotate(45deg);">＋</li>
         </ul>
-      <nav>
-      <div>
-        <label>title</label>
-        <input value="" />
-  
-        <label>description</label>
-        <input value="" />
-  
-        <label>priority</label>
-        <input value="" />
-        <button></button>
+      </nav>
+      <div class="board__data">
+        <div>
+          <label>Title</label>
+          <input value="" type="text" placeholder=""/>
+        </div>
+        <div>
+          <label>Description</label>
+          <textarea value=""  placeholder="" rows="16"></textarea>
+        </div>
+        <div>
+          <label>Priority</label>
+          <input value="10" type="number" min="1"/>
+        </div>
+        <button>
+          Update
+        </button>
       </div>
-      <div>
+      <div class="board__list">>
         lista
       </div>
     </div>

@@ -4,41 +4,43 @@
   position: relative;
 }
 
-
 .branch {
   background-color: #CCC;
   position: absolute;
   height: 100px;
   width: 100px;
   overflow: hidden;
-  border: 2px solid transparent;
   box-sizing: border-box;
   padding: 4px;
   transition: all ;
   display: flex;
   gap: 8px;
   flex-direction: column;
+  cursor: pointer;
+  user-select: none;
 }
 
-
-.branch:hover {
-  border: 2px solid var(--secondary-color);
-  z-index: 100;
+.branch:hover > .branch__title {
+ text-decoration: underline;
 }
 
 .branch__title {
   color: #FFF;
-  font-size: 1.6rem;
   text-align: left;
   mix-blend-mode: difference;
   font-family: 'DynaPuff', cursive;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-
 
 .branch__description {
   color: #FFF;
-  font-size: 1rem;
   text-align: left;
   mix-blend-mode: difference;
   font-family: 'Karla', sans-serif;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
 }
