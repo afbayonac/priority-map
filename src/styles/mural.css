@@ -17,10 +17,12 @@
   user-select: none;
   color: #FFF;
   text-align: left;
+  outline: 2px solid var(--secondary-color);
 }
 
-.branch:hover > .branch__title {
- text-decoration: underline;
+.branch:hover  {
+  transform: scale(1.01);
+  z-index: 100;
 }
 
 .branch__title {
@@ -36,6 +38,7 @@
   font-family: 'Karla', sans-serif;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
-  overflow: hidden;
   -webkit-line-clamp: 4;
+  overflow: hidden;
 }
+

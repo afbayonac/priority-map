@@ -11,6 +11,9 @@ const Board = (document, window) => {
   const background = board.querySelector('.board__background')
   background.addEventListener('click', () => dispatch({ type: 'SHOW_BOARD', payload: false }))
 
+  const closeNav = board.querySelector('#board__nav__close')
+  closeNav.addEventListener('click', () => dispatch({ type: 'SHOW_BOARD', payload: false }))
+
   const list = board.querySelector('.board__background')
   genHTMLList(document.body, list, branches)
 
