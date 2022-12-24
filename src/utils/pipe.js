@@ -1,1 +1,1 @@
-export const pipe = (input, ...args) => args.reduce((aco, fn) => fn(aco), input)
+export const pipe = (...args) => args.reduce((aco, fn) => fn(aco), null)

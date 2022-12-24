@@ -20,7 +20,26 @@ const reducer = (state, { type, payload }) => {
         ...state,
         board: {
           ...state.board,
-          show: payload
+          show: true,
+          select: payload.id,
+          mode: 'edit'
+        }
+      }
+    case 'HIDE_BOARD':
+      return {
+        ...state,
+        board: {
+          ...state.board,
+          show: false,
+          select: null
+        }
+      }
+    case 'MODE_BOARD':
+      return {
+        ...state,
+        board: {
+          ...state.board,
+          mode: payload.mode
         }
       }
     default:
@@ -30,61 +49,61 @@ const reducer = (state, { type, payload }) => {
 
 export const [subscribe, dispatch, getstate] = createStore(reducer, {
   branches: [{
-    item: 1,
+    id: 1,
     title: 'Random title gyjlT',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 40
   },
   {
-    item: 2,
+    id: 2,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 80
   },
   {
-    item: 3,
+    id: 3,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 90
   },
   {
-    item: 4,
+    id: 4,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 100
   },
   {
-    item: 5,
+    id: 5,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 150
   },
   {
-    item: 6,
+    id: 6,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 190
   },
   {
-    item: 7,
+    id: 7,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 190
   },
   {
-    item: 8,
+    id: 8,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 140
   },
   {
-    item: 9,
+    id: 9,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 200
   },
   {
-    item: 10,
+    id: 10,
     title: 'Random title',
     description: 'lorem ipsum dolor sit am id, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dol underlying  theorem ipsum dolor sit am id, consectetur adip  iscing elit sed do eiusmod tempor incididunt ut lab lorem ipsum dolor sit am id, consectetur adip',
     priority: 400

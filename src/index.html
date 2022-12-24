@@ -28,14 +28,14 @@
           <li id="board__nav__close" style="transform: rotate(45deg);">＋</li>
         </ul>
       </nav>
-      <div class="board__data">
+      <div class="board__edit">
         <div>
           <label>Title</label>
           <input value="" type="text" placeholder="Viajar a londres"/>
         </div>
         <div>
           <label>Priority</label>
-          <input value="10" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g)"/>
+          <input value="10" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
         </div>
         <div>
           <label>Description</label>
@@ -59,9 +59,36 @@
           <button>
             Delete
           </button>
-        <div>
+        </div>
       </div>
-      <div class="board__list">>
+      <div class="board__add">
+        <div>
+          <label>Title</label>
+          <input value="" type="text" placeholder="Viajar a londres"/>
+        </div>
+        <div>
+          <label>Priority</label>
+          <input value="10" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+        </div>
+        <div>
+          <label>Description</label>
+          <textarea value=""  placeholder="" rows="16"></textarea>
+        </div>
+        <div>
+          <button>
+            add
+          </button>
+        </div>
+        <div>
+          <label>State</label>
+          <ol class="board__data__state">
+            <li>TO DO</li>
+            <li class="active">DONE</li>
+            <li>ARCHIVE</li>
+          </ol>  
+        </div>
+      </div>
+      <div class="board__list">
         lista
       </div>
     </div>

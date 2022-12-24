@@ -7,7 +7,7 @@ const renderTreemap = (document, element, data) => {
   const height = element.offsetHeight
   const width = element.offsetWidth
   const branches = pipe(
-    data,
+    () => data,
     d => d.sort(desc),
     interpolate,
     normalize,
@@ -45,7 +45,7 @@ const genHTMLElements = document => data => data
     `)
 
     div.classList.add('branch')
-    div.addEventListener('click', () => dispatch({ type: 'SHOW_BOARD', payload: true }))
+    div.addEventListener('click', () => dispatch({ type: 'SHOW_BOARD', payload: { id: branch.id } }))
 
     div.innerHTML = `
     <h2 class="branch__title" style='
@@ -71,7 +71,7 @@ const Mural = (document, window) => {
   renderTreemap(document, mural, branches)
 
   subscribe(state => {
-    console.log('update map')
+    console.log('update mural')
     const { branches } = state
     console.log({ branches })
     renderTreemap(document, mural, branches)

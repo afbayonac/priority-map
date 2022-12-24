@@ -18,6 +18,8 @@
   gap: 24px;
   flex-direction: row;
   max-width: calc(100vw - 32px);
+  height: 680px;
+  max-height: 100vh;
   margin: 0 auto;
   width: 680px;
   transform: translate(-50%, -50%);
@@ -66,7 +68,7 @@
   width: 100%;
 }
 
-.board__data input{
+.board input{
   background-color: var(--secondary-color);
   color: var(--primary-color);
   font-size: 24px;
@@ -75,19 +77,19 @@
   outline: none;
 }
 
-.board__data input:focus{
+.board input:focus{
   outline: none;
   color: var(--main-color);
 }
 
-input::placeholder {
+.board input::placeholder {
   font-weight: bold;
   opacity: 0.5;
   color: var(--primary-color);
 }
 
 
-.board__data textarea{
+.board textarea{
   background-color: var(--secondary-color);
   color: var(--primary-color);
   font-size: 20px;
@@ -96,12 +98,12 @@ input::placeholder {
   outline: none;
 }
 
-.board__data textarea:focus{
+.board textarea:focus{
   outline: none;
   color: var(--main-color);
 }
 
-textarea::placeholder {
+.board textarea::placeholder {
   font-weight: bold;
   opacity: 0.5;
   color: var(--primary-color);
@@ -139,12 +141,33 @@ textarea::placeholder {
   color: var(--secondary-color);
 }
 
+.board__list.hide, .board__edit.hide, .board__add.hide  {
+  display: none;
+}
 
 
-.board__list {
+.board__edit {
   box-sizing: border-box;
   position: relative;
-  display: none;
+  display: block;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+ }
+
+ .board__add {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: calc(100% -  24px);
+ }
+
+ .board__list {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
   flex-direction: column;
   gap: 16px;
   width: calc(100% -  24px);
