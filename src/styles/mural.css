@@ -20,11 +20,6 @@
   outline: 2px solid var(--secondary-color);
 }
 
-.branch:hover  {
-  transform: scale(1.01);
-  z-index: 100;
-}
-
 .branch__title {
   mix-blend-mode: difference;
   font-family: 'DynaPuff', cursive;

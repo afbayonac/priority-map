@@ -28,38 +28,29 @@
           <li id="board__nav__close" style="transform: rotate(45deg);">＋</li>
         </ul>
       </nav>
-      <div class="board__edit">
+      <div id="edit" class="board__edit edit">
         <div>
-          <label>Title</label>
-          <input value="" type="text" placeholder="Viajar a londres"/>
+          <label>Title</label> 
+          <input class="edit__title" placeholder="Viajar a londres" type="text"/>
         </div>
         <div>
           <label>Priority</label>
-          <input value="10" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+          <input class="edit__priority" placeholder="1" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
         </div>
         <div>
           <label>Description</label>
-          <textarea value=""  placeholder="" rows="16"></textarea>
+          <textarea class="edit__description" placeholder="" rows="12"></textarea>
         </div>
-        <div>
-          <label>State</label>
-          <ol class="board__data__state">
-            <li>TO DO</li>
-            <li class="active">DONE</li>
-            <li>ARCHIVE</li>
-          </ol>  
-        </div>
-        <div>
-          <button>
+
+        <div class="edit__actions">
+          <div class="action__update">
             Update
-          </button>
-          <button>
-            Update
-          </button>
-          <button>
-            Delete
-          </button>
+          </div>
+          <div class="action__remove">
+            Remove
+          </div>
         </div>
+
       </div>
       <div class="board__add">
         <div>
@@ -75,22 +66,15 @@
           <textarea value=""  placeholder="" rows="16"></textarea>
         </div>
         <div>
-          <button>
-            add
-          </button>
+          <div>
+            Create
+          </div>
         </div>
         <div>
-          <label>State</label>
-          <ol class="board__data__state">
-            <li>TO DO</li>
-            <li class="active">DONE</li>
-            <li>ARCHIVE</li>
-          </ol>  
+          <label>State</label> 
         </div>
       </div>
-      <div class="board__list">
-        lista
-      </div>
+      <div id="list"  class="board__list list"></div>
     </div>
   </section>
 </body>

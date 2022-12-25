@@ -1,0 +1,23 @@
+.edit__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: space-around;
+}
+
+.action__remove, .action__update {
+  text-decoration: underline;
+  padding: 8px;
+  cursor: pointer;
+  text-underline-offset: 3px;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 1px;
+  color: #CCC;
+}
+.action__remove {
+  text-decoration-color:  #ff5733 ;
+
+}
+
+.action__update {
+  text-decoration-color: var(--main-color);
+}

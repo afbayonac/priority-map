@@ -1,0 +1,36 @@
+.list {
+  overflow: auto;
+  padding: 0 16px;
+}
+
+.list__item {
+  background-color: #ccc;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--secondary-color)
+}
+
+.list__item:hover {
+  background-color: var(--main-color);
+}
+
+.list__title {
+  font-family: 'DynaPuff', cursive;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.list__description {
+  padding: 2px;
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+}

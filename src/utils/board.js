@@ -3,13 +3,8 @@ import { pipe } from './pipe'
 
 import { dispatch, getstate, subscribe } from './state'
 
-const genHTMLList = (document, node, data) => {
-  data.forEach(d => {
-  })
-}
-
 const Board = (document, window) => {
-  const { branches, board } = getstate()
+  const { board } = getstate()
   const { show, mode } = board
   const boardElement = document.getElementById('board')
 
@@ -26,8 +21,6 @@ const Board = (document, window) => {
   createNav.addEventListener('click', () => dispatch({ type: 'MODE_BOARD', payload: { mode: 'add' } }))
 
   const list = boardElement.querySelector('.board__list')
-  genHTMLList(document.body, list, branches)
-
   const edit = boardElement.querySelector('.board__edit')
   const add = boardElement.querySelector('.board__add')
 

@@ -85,6 +85,7 @@ const calcAreaPosition = (data, base, offsetX, offsetY, isInverted) => data
 export const interpolate = data => {
   const min = Math.min(...data.map(d => d.priority))
   const max = Math.max(...data.map(d => d.priority))
+  if (min === max) return data.map(d => ({ ...d, interpolation: 1 }))
   const t = v => (v - min) / (max - min)
 
   return data.map(d => ({ ...d, interpolation: t(d.priority) }))
