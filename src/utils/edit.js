@@ -9,10 +9,23 @@ const Edit = (document, window) => {
   const title = edit.querySelector('.edit__title')
   const priority = edit.querySelector('.edit__priority')
   const description = edit.querySelector('.edit__description')
-  const update = edit.querySelector('.action__update')
-  const remove = edit.querySelector('.action__remove')
+  const update = edit.querySelector('.edit__action__update')
+  const remove = edit.querySelector('.edit__action__remove')
+
+  const isValid = () => Number(priority.value) > 0 && title.value.match(/^.{1,}$/)
+
+  title.addEventListener('oninput', () => {
+    console.log('title changed')
+    isValid() ? update.classList.add('active') : update.classList.remove('active')
+  })
+
+  priority.addEventListener('onchange', () => {
+    isValid() ? update.classList.add('active') : update.classList.remove('active')
+  })
 
   update.addEventListener('click', () => {
+    if (!isValid()) return
+
     const { board } = getstate()
     const { select } = board
     const item = {

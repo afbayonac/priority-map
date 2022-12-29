@@ -4,20 +4,26 @@
   justify-content: space-around;
 }
 
-.action__remove, .action__update {
+.edit__action__remove, .edit__action__update, .edit__action__update {
   text-decoration: underline;
   padding: 8px;
   cursor: pointer;
   text-underline-offset: 3px;
-  text-decoration-style: wavy;
+  text-decoration-style:  underline;
   text-decoration-thickness: 1px;
-  color: #CCC;
-}
-.action__remove {
-  text-decoration-color:  #ff5733 ;
 
 }
+.edit__action__remove {
+  color:  #ff5733;
+}
 
-.action__update {
-  text-decoration-color: var(--main-color);
+
+.edit__action__update {
+  color: #AAA;
+  cursor:  not-allowed;
+}
+
+.edit__action__update.active {
+  color: #FFF;
+  cursor:  pointer
 }

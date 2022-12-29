@@ -39,7 +39,7 @@ const reducer = (state, { type, payload }) => {
         ]
       }
     }
-    case 'NEW': {
+    case 'ADD': {
       const { items, board } = state
       const id = Math.max(...items.map(e => e.id)) + 1
       const { item } = payload

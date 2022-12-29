@@ -1,0 +1,14 @@
+.add__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: space-around;
+}
+
+.add__action__remove, .add_action__update, .add__action__add {
+  text-decoration: underline;
+  padding: 8px;
+  cursor: pointer;
+  text-underline-offset: 3px;
+  text-decoration-style: underline;
+  text-decoration-thickness: 1px;
+}

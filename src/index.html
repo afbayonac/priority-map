@@ -30,48 +30,45 @@
       </nav>
       <div id="edit" class="board__edit edit">
         <div>
-          <label>Title</label> 
-          <input class="edit__title" placeholder="Viajar a londres" type="text"/>
+          <label>Title *</label> 
+          <input class="edit__title" placeholder="Exercise regularly" type="text"/>
         </div>
         <div>
-          <label>Priority</label>
+          <label>Priority *</label>
           <input class="edit__priority" placeholder="1" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
         </div>
         <div>
           <label>Description</label>
-          <textarea class="edit__description" placeholder="" rows="12"></textarea>
+          <textarea class="edit__description" placeholder="start by walking, running, or doing any activity you enjoy for at least 30 minutes a day"rows="12"></textarea>
         </div>
 
         <div class="edit__actions">
-          <div class="action__update">
+          <div class="edit__action__update">
             Update
           </div>
-          <div class="action__remove">
+          <div class="edit__action__remove">
             Remove
           </div>
         </div>
 
       </div>
-      <div class="board__add">
+      <div id="add" class="board__add">
         <div>
-          <label>Title</label>
-          <input value="" type="text" placeholder="Viajar a londres"/>
+          <label>Title *</label>
+          <input value="" class="add__title" type="text" placeholder="Exercise regularly"/>
         </div>
         <div>
-          <label>Priority</label>
-          <input value="10" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+          <label>Priority *</label>
+          <input value="1" class="add__priority"  type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
         </div>
         <div>
           <label>Description</label>
-          <textarea value=""  placeholder="" rows="16"></textarea>
+          <textarea value=""  class="add__description" placeholder="start by walking, running, or doing any activity you enjoy for at least 30 minutes a day" rows="12"></textarea>
         </div>
-        <div>
-          <div>
-            Create
+        <div class="add__actions">
+          <div class="add__action__add">
+            Add
           </div>
-        </div>
-        <div>
-          <label>State</label> 
         </div>
       </div>
       <div id="list"  class="board__list list"></div>

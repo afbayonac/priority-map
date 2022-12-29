@@ -7,6 +7,7 @@ import Board from './utils/board'
 import Mural from './utils/mural'
 import List from './utils/list'
 import Edit from './utils/edit'
+import Add from './utils/add'
 
 const scrollBeheaveor = (global) => {
   const vh = global.innerHeight
@@ -25,3 +26,4 @@ Board(document, window)
 Mural(document, window)
 List(document, window)
 Edit(document, window)
+Add(document, window)
