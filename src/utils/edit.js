@@ -14,12 +14,11 @@ const Edit = (document, window) => {
 
   const isValid = () => Number(priority.value) > 0 && title.value.match(/^.{1,}$/)
 
-  title.addEventListener('oninput', () => {
-    console.log('title changed')
+  title.addEventListener('input', () => {
     isValid() ? update.classList.add('active') : update.classList.remove('active')
   })
 
-  priority.addEventListener('onchange', () => {
+  priority.addEventListener('input', () => {
     isValid() ? update.classList.add('active') : update.classList.remove('active')
   })
 
