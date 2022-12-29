@@ -72,6 +72,16 @@ const Mural = (document, window) => {
   const { items } = getstate()
   renderTreemap(document, mural, items)
 
+  let resizeTimeout = null
+
+  window.addEventListener('resize', () => {
+    if (resizeTimeout !== null) clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(() => {
+      const { items } = getstate()
+      renderTreemap(document, mural, items)
+    }, 300)
+  })
+
   pipe(
     () => items,
     items => {

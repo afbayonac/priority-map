@@ -24,6 +24,13 @@ const Board = (document, window) => {
   const edit = boardElement.querySelector('.board__edit')
   const add = boardElement.querySelector('.board__add')
 
+  let resizeTimeout = null
+
+  window.addEventListener('resize', () => {
+    if (resizeTimeout !== null) clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(() => {}, 300)
+  })
+
   pipe(
     () => mode,
     init => {
