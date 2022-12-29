@@ -8,6 +8,7 @@ import Mural from './modules/mural'
 import List from './modules/list'
 import Edit from './modules/edit'
 import Add from './modules/add'
+import storage from './utils/storage'
 
 const scrollBeheaveor = (global) => {
   const vh = global.innerHeight
@@ -22,6 +23,8 @@ const scrollBeheaveor = (global) => {
 }
 
 scrollBeheaveor(window)
+storage(window)
+
 Board(document, window)
 Mural(document, window)
 List(document, window)
