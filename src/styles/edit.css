@@ -10,8 +10,8 @@
   cursor: pointer;
   text-underline-offset: 3px;
   text-decoration-style:  underline;
-  text-decoration-thickness: 1px;
-
+  text-decoration-thickness: 2px;
+  user-select: none;
 }
 .edit__action__remove {
   color:  #ff5733;

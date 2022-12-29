@@ -4,11 +4,18 @@
   justify-content: space-around;
 }
 
-.add__action__remove, .add_action__update, .add__action__add {
+.add__action__add {
   text-decoration: underline;
   padding: 8px;
   cursor: pointer;
   text-underline-offset: 3px;
   text-decoration-style: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 2px;
+  user-select: none;
+  color: #AAA;
+}
+
+
+.add__action__add.active {
+  color: #FFF;
 }

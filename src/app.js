@@ -3,11 +3,11 @@ import './styles/globals.css'
 import './styles/hero.css'
 import './styles/mural.css'
 
-import Board from './utils/board'
-import Mural from './utils/mural'
-import List from './utils/list'
-import Edit from './utils/edit'
-import Add from './utils/add'
+import Board from './modules/board'
+import Mural from './modules/mural'
+import List from './modules/list'
+import Edit from './modules/edit'
+import Add from './modules/add'
 
 const scrollBeheaveor = (global) => {
   const vh = global.innerHeight
