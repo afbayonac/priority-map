@@ -24,6 +24,10 @@ const Edit = (document, window) => {
     isValid() ? update.classList.add('active') : update.classList.remove('active')
   })
 
+  description.addEventListener('input', () => {
+    isValid() ? update.classList.add('active') : update.classList.remove('active')
+  })
+
   update.addEventListener('click', () => {
     if (!isValid()) return
 

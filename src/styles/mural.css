@@ -17,7 +17,7 @@
   user-select: none;
   color: #FFF;
   text-align: left;
-  outline: 2px solid var(--secondary-color);
+  outline: 2px solid #FFF;
 }
 
 .branch__title {
@@ -31,9 +31,9 @@
 .branch__description {
   mix-blend-mode: difference;
   font-family: 'Karla', sans-serif;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;  
   overflow: hidden;
 }
 

@@ -24,6 +24,10 @@ const Board = (document, window) => {
   const edit = boardElement.querySelector('.board__edit')
   const add = boardElement.querySelector('.board__add')
 
+  boardElement.addEventListener('wheel', () => {
+    document.body.style.overflow = 'hidden'
+  })
+
   pipe(
     () => mode,
     init => {
@@ -64,8 +68,11 @@ const Board = (document, window) => {
         console.log('update show')
         if (value === true) {
           boardElement.classList.add('show')
+          const mural = document.getElementById('mural')
+          window.scrollTo({ top: mural.offsetTop, behavior: 'smooth' })
         } else {
           boardElement.classList.remove('show')
+          document.body.style.overflow = 'auto'
         }
       }
     },

@@ -56,10 +56,11 @@ const genHTMLElements = document => items => items
       min-height: ${titleSize(interpolation) + 2}px;
     '>
       ${title}
-      ${Math.floor(width / height * 100) / 100} 
     </h2>
     <div class="branch__description" style='
-      font-size: ${descriptionSize(interpolation)}px;
+      font-size: ${Math.floor(descriptionSize(interpolation))}px;
+      line-height: ${Math.floor(descriptionSize(interpolation)) + 2}px;
+      -webkit-line-clamp: ${Math.floor(height / (descriptionSize(interpolation) + 2) - 4)};
     '>
       ${description.replace(/(\r\n|\n|\r)/gm, '<br />')}
     </div>
