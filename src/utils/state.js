@@ -53,7 +53,7 @@ const reducer = (state, { type, payload }) => {
         ],
         board: {
           ...board,
-          selected: id,
+          select: id,
           mode: 'edit'
         }
       }
@@ -70,7 +70,7 @@ const reducer = (state, { type, payload }) => {
         ],
         board: {
           ...board,
-          selected: null,
+          select: null,
           mode: 'list'
         }
       }

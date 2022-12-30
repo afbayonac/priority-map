@@ -6,7 +6,7 @@ module.exports = (env, argv) => {
   return {
     ...(argv.mode === 'development'
       ? {
-          watch: true,
+          // watch: true,
           devServer: {
             static: {
               directory: path.join(__dirname, 'dist')
