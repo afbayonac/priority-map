@@ -21,7 +21,7 @@ const genHTMLElements = document => items => items
       ${item.title}
     </h2>
     <div class="list__description" >
-      ${item.description}
+      ${item.description.replace(/(\r\n|\n|\r)/gm, '<br />')}
     </div>
     `
     return div
