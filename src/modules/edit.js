@@ -46,7 +46,6 @@ const Edit = (document, window) => {
   remove.addEventListener('click', () => {
     const { board } = getstate()
     const { select } = board
-    console.log('DISPATCHING REMOVE')
     dispatch({ type: 'REMOVE', payload: { id: select } })
   })
 
@@ -56,7 +55,6 @@ const Edit = (document, window) => {
       let value = id
       return state => {
         const { select } = state.board
-        console.log('edit', select)
         if (value === select) return
         value = select
 

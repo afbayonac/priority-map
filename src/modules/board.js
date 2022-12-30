@@ -65,7 +65,6 @@ const Board = (document, window) => {
         const newValue = state.board.show
         if (newValue === value) return
         value = newValue
-        console.log('update show')
         if (value === true) {
           boardElement.classList.add('show')
           const mural = document.getElementById('mural')

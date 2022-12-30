@@ -4,7 +4,6 @@ import { dispatch, getstate, subscribe } from '../utils/state'
 import { calcAreaByBranch, calcColor, interpolate, normalize, squarifiedPlus } from '../utils/layouts'
 
 const renderTreemap = (document, element, data) => {
-  console.log('rendertreemap')
   const height = element.offsetHeight
   const width = element.offsetWidth
   const branches = pipe(

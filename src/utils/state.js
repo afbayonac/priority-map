@@ -29,7 +29,6 @@ const reducer = (state, { type, payload }) => {
       const { items } = state
       const { item } = payload
       const index = items.findIndex(branch => branch.id === item.id)
-      console.log('UPDATE item', item, index)
       return {
         ...state,
         items: [
