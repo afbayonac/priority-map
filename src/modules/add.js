@@ -43,7 +43,7 @@ const Add = (document, window) => {
         if (mode === 'add') {
           title.focus()
           title.value = ''
-          priority.value = '1'
+          priority.value = '100'
           description.value = ''
         }
       }

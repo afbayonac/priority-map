@@ -6,7 +6,8 @@ import { calcAreaByBranch, calcColor, interpolate, normalize, squarifiedPlus } f
 const renderTreemap = (document, element, data) => {
   const height = element.offsetHeight
   const width = element.offsetWidth
-  const branches = pipe(
+
+  pipe(
     () => data,
     d => d.sort(desc),
     interpolate,
@@ -19,36 +20,25 @@ const renderTreemap = (document, element, data) => {
       }
       return squarifiedPlus(d, height, width, [], 0, 0, true)
     },
-    genHTMLElements(document)
+    d => genHTMLElements(d, document, element)
   )
-
-  element.replaceChildren(...branches)
 }
 
 const desc = (a, b) => b.priority - a.priority
-
 const titleSize = v => (24 * v) + 14
 const descriptionSize = v => (20 * v) + 12
-const genHTMLElements = document => items => items
+const genHTMLElements = (items, document, element) => items
   .map(item => {
-    const { width, height, top, left, norm, color, interpolation, title, description, id } = item
+    const { width, height, top, left, color, interpolation, title, description, id } = item
+    const scale = width < height ? width : height
 
-    const div = document.createElement('div')
-    const scale = width < height ? width : height // Math.sqrt(branch.area, 2)
+    const div = element.querySelector(`#branch-${id}`) || document.createElement('div')
 
-    div.setAttribute('style', `
-      width: ${Math.ceil(width)}px;
-      height: ${Math.ceil(height)}px;
-      top: ${Math.ceil(top)}px;
-      left: ${Math.ceil(left)}px;
-      
-      background-color: ${norm > 0.01 ? color : 'red'};
-      padding: ${scale / 20}px;
-    `)
-
-    div.classList.add('branch')
-    div.addEventListener('click', () => dispatch({ type: 'EDIT', payload: { id } }))
-
+    div.style.height = `${Math.ceil(width)}px`
+    div.style.top = `${Math.ceil(width)}px`
+    div.style.left = `${Math.ceil(width)}px`
+    div.style.back = `${Math.ceil(width)}px`
+    div.style.width = `${Math.ceil(width)}px`
     div.innerHTML = `
     <h2 class="branch__title" style='
       font-size: ${titleSize(interpolation)}px;
@@ -64,21 +54,42 @@ const genHTMLElements = document => items => items
       ${description.replace(/(\r\n|\n|\r)/gm, '<br />')}
     </div>
     `
-    return div
+
+    setTimeout(() => {
+      div.setAttribute('style', `
+        width: ${Math.ceil(width)}px;
+        height: ${Math.ceil(height)}px;
+        top: ${Math.ceil(top)}px;
+        left: ${Math.ceil(left)}px;
+        
+        background-color: ${color};
+        padding: ${scale / 20}px;
+      `)
+    })
+
+    if (!div.getAttribute('id')) {
+      console.log('create')
+      div.setAttribute('id', `branch-${id}`)
+      div.classList.add('branch')
+      div.addEventListener('click', () => dispatch({ type: 'EDIT', payload: { id } }))
+      element.appendChild(div)
+    }
+
+    return items
   })
 
 const Mural = (document, window) => {
   const mural = document.getElementById('mural')
   const { items } = getstate()
   renderTreemap(document, mural, items)
-
+  const nodes = {}
   let resizeTimeout = null
 
   window.addEventListener('resize', () => {
     if (resizeTimeout !== null) clearTimeout(resizeTimeout)
     resizeTimeout = setTimeout(() => {
       const { items } = getstate()
-      renderTreemap(document, mural, items)
+      renderTreemap(document, mural, items, nodes)
     }, 300)
   })
 
@@ -90,7 +101,7 @@ const Mural = (document, window) => {
         const { items } = state
         if (value === items) return
         value = items
-        renderTreemap(document, mural, items)
+        renderTreemap(document, mural, items, nodes)
       }
     },
     subscribe
