@@ -29,7 +29,7 @@ const titleSize = v => (24 * v) + 14
 const descriptionSize = v => (20 * v) + 12
 const genHTMLElements = (items, document, element) => items
   .map(item => {
-    const { width, height, top, left, color, interpolation, title, description, id } = item
+    const { width, height, top, left, color, interpolation, title, description, id, priority } = item
     const scale = width < height ? width : height
 
     const div = element.querySelector(`#branch-${id}`) || document.createElement('div')
@@ -55,21 +55,19 @@ const genHTMLElements = (items, document, element) => items
     </div>
     `
 
-    setTimeout(() => {
-      div.setAttribute('style', `
-        width: ${Math.ceil(width)}px;
-        height: ${Math.ceil(height)}px;
-        top: ${Math.ceil(top)}px;
-        left: ${Math.ceil(left)}px;
-        
-        background-color: ${color};
-        padding: ${scale / 20}px;
-      `)
-    })
+    div.setAttribute('style', `
+      width: ${Math.ceil(width)}px;
+      height: ${Math.ceil(height)}px;
+      top: ${Math.ceil(top)}px;
+      left: ${Math.ceil(left)}px;
+      
+      background-color: ${color};
+      padding: ${scale / 20}px;
+    `)
 
     if (!div.getAttribute('id')) {
-      console.log('create')
       div.setAttribute('id', `branch-${id}`)
+      div.setAttribute('data-priority', `${priority}`)
       div.classList.add('branch')
       div.addEventListener('click', () => dispatch({ type: 'EDIT', payload: { id } }))
       element.appendChild(div)
