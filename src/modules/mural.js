@@ -20,7 +20,14 @@ const renderTreemap = (document, element, data) => {
       }
       return squarifiedPlus(d, height, width, [], 0, 0, true)
     },
-    d => genHTMLElements(d, document, element)
+    d => genHTMLElements(d, document, element),
+    d => {
+      const ids = d.map(({ id }) => `branch-${id}`)
+      Array(...element.children)
+        .filter(e => !ids.includes(e.id))
+        .forEach(e => element.removeChild(e))
+      return d
+    }
   )
 }
 
@@ -73,7 +80,7 @@ const genHTMLElements = (items, document, element) => items
       element.appendChild(div)
     }
 
-    return items
+    return item
   })
 
 const Mural = (document, window) => {
