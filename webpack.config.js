@@ -41,6 +41,9 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './src/index.html',
+        minify: {
+          removeRedundantAttributes: false
+        },
         ...(argv.mode === 'production' ? { base: 'https://afbayonac.github.io/priority-treemap/' } : {})
       }),
       new CopyPlugin({
