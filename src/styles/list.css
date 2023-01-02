@@ -11,6 +11,10 @@
   color: var(--secondary-color)
 }
 
+.list__item.archived {
+  background-color: #AAA;
+}
+
 .list__item:hover {
   background-color: var(--main-color);
 }

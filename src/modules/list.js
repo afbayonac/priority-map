@@ -11,10 +11,16 @@ const renderList = (document, list, items) => {
 }
 
 const genHTMLElements = document => items => items
+  .map(item => item.archived === undefined ? { ...item, archived: false } : item)
+  .sort((a, b) => Number(a.archived) - Number(b.archived))
   .map(item => {
     const div = document.createElement('div')
     div.setAttribute('class', 'list__item')
     div.addEventListener('click', () => dispatch({ type: 'EDIT', payload: { id: item.id } }))
+
+    if (item.archived) {
+      div.classList.add('archived')
+    }
 
     div.innerHTML = `
     <h2 class="list__title">

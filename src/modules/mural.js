@@ -9,6 +9,11 @@ const renderTreemap = (document, element, data) => {
 
   pipe(
     () => data,
+    d => {
+      console.log(d.filter(d => !d.archived).map(e => e.archived))
+      return d
+    },
+    d => d.filter(d => !d.archived),
     d => d.sort(desc),
     interpolate,
     normalize,

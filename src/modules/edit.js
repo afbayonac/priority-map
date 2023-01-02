@@ -9,6 +9,7 @@ const Edit = (document, window) => {
   const title = edit.querySelector('.edit__title')
   const priority = edit.querySelector('.edit__priority')
   const description = edit.querySelector('.edit__description')
+  const archived = edit.querySelector('.edit__archived')
   const update = edit.querySelector('.edit__action__update')
   const remove = edit.querySelector('.edit__action__remove')
 
@@ -28,16 +29,22 @@ const Edit = (document, window) => {
     isValid() ? update.classList.add('active') : update.classList.remove('active')
   })
 
+  archived.addEventListener('input', () => {
+    isValid() ? update.classList.add('active') : update.classList.remove('active')
+  })
+
   update.addEventListener('click', () => {
     if (!isValid()) return
 
     const { board } = getstate()
     const { select } = board
+
     const item = {
       id: select,
       title: title.value,
       description: description.value,
-      priority: Number(priority.value)
+      priority: Number(priority.value),
+      archived: archived.checked
     }
 
     dispatch({ type: 'UPDATE', payload: { item } })
@@ -66,6 +73,8 @@ const Edit = (document, window) => {
         title.value = item.title
         priority.value = item.priority
         description.value = item.description
+        console.log(item.archived)
+        archived.checked = item.archived
       }
     },
     subscribe

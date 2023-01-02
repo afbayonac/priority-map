@@ -43,11 +43,18 @@
         </div>
         <div>
           <label>Priority *</label>
-          <input class="edit__priority" placeholder="1" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+          <input class="edit__priority" maxlength="4" placeholder="1" type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+        </div>
+        <div>
+          <label>archived</label>
+          <div  class="checkbox">
+            <input class="edit__archived" type="checkbox" />
+            <span class="checkmark"></span>
+          </div>
         </div>
         <div>
           <label>Description</label>
-          <textarea class="edit__description" placeholder="start by walking, running, or doing any activity you enjoy for at least 30 minutes a day"rows="12"></textarea>
+          <textarea class="edit__description" placeholder="start by walking, running, or doing any activity you enjoy for at least 30 minutes a day"rows="9"></textarea>
         </div>
 
         <div class="edit__actions">
@@ -67,7 +74,7 @@
         </div>
         <div>
           <label>Priority *</label>
-          <input value="100" class="add__priority"  type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+          <input value="100" maxlength="4" class="add__priority"  type="text" pattern="[0-9]" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
         </div>
         <div>
           <label>Description</label>
