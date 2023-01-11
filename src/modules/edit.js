@@ -73,7 +73,6 @@ const Edit = (document, window) => {
         title.value = item.title
         priority.value = item.priority
         description.value = item.description
-        console.log(item.archived)
         archived.checked = item.archived
       }
     },

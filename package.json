@@ -4,21 +4,13 @@
   "author": "Felipe Bayona <afbayonac@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "webpack",
-    "build": "webpack --mode production",
-    "dev": "webpack serve --mode development"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.7.3",
-    "eslint": "^8.30.0",
-    "html-webpack-plugin": "^5.5.0",
-    "source-map-loader": "^4.0.1",
     "standard": "^17.0.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "vite": "^4.0.4"
   },
   "dependencies": {
     "d3-scale-chromatic": "^3.0.0"
