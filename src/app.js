@@ -9,6 +9,11 @@ import List from './modules/list'
 import Edit from './modules/edit'
 import Add from './modules/add'
 import storage from './utils/storage'
+import { log } from './utils/log'
+import { app } from './utils/firebase'
+import { oauth } from './utils/oauth'
+
+// oauth(app, window)
 
 const scrollBeheaveor = (global) => {
   const vh = global.innerHeight

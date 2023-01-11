@@ -5,7 +5,11 @@ const defineConfig = ({ command, mode, ssrBuild }) => {
     publicDir: '../public',
     build: {
       outDir: '../dist',
-      copyPublicDir: true
+      copyPublicDir: true,
+      emptyOutDir: true
+    },
+    server: {
+      port: 5000
     }
   }
 

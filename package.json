@@ -13,6 +13,7 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "d3-scale-chromatic": "^3.0.0"
+    "d3-scale-chromatic": "^3.0.0",
+    "firebase": "^9.15.0"
   }
 }

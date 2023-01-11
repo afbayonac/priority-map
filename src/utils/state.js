@@ -108,5 +108,8 @@ export const [subscribe, dispatch, getstate] = createStore(reducer, {
   board: {
     show: false,
     select: null
+  },
+  user: {
+    loggedIn: false
   }
 })
