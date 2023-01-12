@@ -8,12 +8,13 @@ import Mural from './modules/mural'
 import List from './modules/list'
 import Edit from './modules/edit'
 import Add from './modules/add'
+import Auth from './modules/auth'
 import storage from './utils/storage'
-import { log } from './utils/log'
+
 import { app } from './utils/firebase'
 import { oauth } from './utils/oauth'
 
-// oauth(app, window)
+oauth(app, window)
 
 const scrollBeheaveor = (global) => {
   const vh = global.innerHeight
@@ -29,9 +30,9 @@ const scrollBeheaveor = (global) => {
 
 scrollBeheaveor(window)
 storage(window)
-
 Board(document, window)
 Mural(document, window)
 List(document, window)
 Edit(document, window)
 Add(document, window)
+Auth(document, window)

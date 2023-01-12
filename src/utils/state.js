@@ -90,14 +90,17 @@ const reducer = (state, { type, payload }) => {
           show: false
         }
       }
-    case 'MODE_BOARD':
+    case 'SIGNIN': {
+      const { user } = payload
       return {
         ...state,
-        board: {
-          ...state.board,
-          mode: payload.mode
+        holins: 'ok',
+        user: {
+          data: user,
+          logged: true
         }
       }
+    }
     default:
       return state
   }
@@ -110,6 +113,6 @@ export const [subscribe, dispatch, getstate] = createStore(reducer, {
     select: null
   },
   user: {
-    loggedIn: false
+    logged: false
   }
 })
