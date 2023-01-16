@@ -1,3 +1,6 @@
+import { logEvent } from "firebase/analytics"
+import { log } from "./log"
+
 const createStore = (reducer, initialState) => {
   let state = initialState
   const subscribers = []
@@ -82,6 +85,19 @@ const reducer = (state, { type, payload }) => {
         items
       }
     }
+    case 'MODE_BOARD': {
+      log('here')
+      const { mode } = payload
+      const { board } = state
+      return {
+        ...state,
+        board: {
+          ...board,
+          select: null,
+          mode
+        }
+      }
+    }
     case 'HIDE_BOARD':
       return {
         ...state,
@@ -94,10 +110,18 @@ const reducer = (state, { type, payload }) => {
       const { user } = payload
       return {
         ...state,
-        holins: 'ok',
         user: {
           data: user,
           logged: true
+        }
+      }
+    }
+    case 'NO_USER': {
+      return {
+        ...state,
+        user: {
+          data: null,
+          logged: false
         }
       }
     }
@@ -113,6 +137,6 @@ export const [subscribe, dispatch, getstate] = createStore(reducer, {
     select: null
   },
   user: {
-    logged: false
+    logged: null
   }
 })
