@@ -22,7 +22,7 @@ const defineConfig = ({ command, mode, ssrBuild }) => {
 
   return {
     ...config,
-    base: 'https://afbayonac.github.io/priority-treemap/'
+    base: 'https://afbayonac.github.io/priority-map/'
   }
 }
 
